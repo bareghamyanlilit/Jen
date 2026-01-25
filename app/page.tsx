@@ -12,7 +12,7 @@ import {
 import Calendar from "./calendar";
 
 export default function Home() {
-  const weddingDate = new Date("2026-06-15T12:00:00");
+  const weddingDate:any = new Date("2026-06-15T12:00:00");
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -23,7 +23,7 @@ export default function Home() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const now = new Date();
+      const now:any = new Date();
       const diff = weddingDate - now;
 
       if (diff > 0) {
