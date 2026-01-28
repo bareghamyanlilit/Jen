@@ -12,7 +12,7 @@ import {
 import Calendar from "./calendar";
 
 export default function Home() {
-  const weddingDate:any = new Date("2026-06-15T12:00:00");
+  const weddingDate:any = new Date("2026-06-16T12:00:00");
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -72,22 +72,22 @@ export default function Home() {
   ];
   return (
     <main
-      className="min-h-screen bg-cover bg-center text-white"
+      className="min-h-screen bg-fixed bg-center text-white"
       style={{
         backgroundImage:
-          "url(https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80)",
+          "url('/photo_2026-01-25_19-16-38.jpg')",
       }}
     >
       {/* DARK OVERLAY */}
       <div className="bg-black/55 min-h-screen relative">
         {/* HERO */}
-        <section className="relative flex flex-col items-center justify-center text-center min-h-[90vh] px-6">
+        <section className="relative flex flex-col items-center justify-center text-center min-h-[95vh] px-6">
           <p className="tracking-[0.35em] absolute top-20 uppercase text-sm mb-5 opacity-80">
             Հարսանեկան հրավիրատոմս
           </p>
 
           <h1 className="text-6xl md:text-7xl font-serif tracking-wider">
-            Ժենյա <span className="mx-2">&</span> Վալոդիա
+            Ժենյա <br /> <span className="mx-2">&</span> <br /> Վլո
           </h1>
 
           <p className="mt-6 text-lg max-w-md opacity-90">
@@ -117,7 +117,7 @@ export default function Home() {
         </section>
 
         {/* PROGRAM */}
-        <section className="bg-white text-[#3a2f2f] rounded-t-[40px] px-6 py-12">
+        <section className="bg-white text-[#3a2f2f]  px-6 py-12">
           <h2 className="text-center text-3xl mb-10 font-serif">Օրվա Ծրագիր</h2>
           {program.map((item, index) => (
             <Program
@@ -130,11 +130,11 @@ export default function Home() {
           ))}
         </section>
 
-        <Calendar year={2026} month={8} highlightDay={15} />
+        <Calendar year={2026} month={6} highlightDay={16} />
 
         {/* FOOTER */}
         <footer className="py-10 text-center text-sm bg-[#fdf8f5]   text-[#3a2f2f]">
-          <p>Ժենիա 📞 091 00 00 00 | Վալոդիա 📞 093 00 00 00</p>
+          <p>Ժենիա 📞 091 00 00 00 | Վլո 📞 093 00 00 00</p>
           <p className="mt-2 opacity-60">Պատրաստվել է հարսնաքրոջ կողմից</p>
         </footer>
 
@@ -153,8 +153,8 @@ export default function Home() {
 /* COMPONENTS */
 
 const TimeBox = ({ label, value }) => (
-  <div className="backdrop-blur-md bg-white/80  px-5 py-3 rounded-2xl shadow text-center min-w-50px]">
-    <div className="text-2xl md:text-3xl font-semibold text-[#3a2f2f]">
+  <div className="backdrop-blur-md bg-white/80 px-4 py-2  md:px-5 md:py-3 rounded-2xl shadow text-center ">
+    <div className="text-xl md:text-3xl font-semibold text-[#3a2f2f]">
       {value}
     </div>
     <div className="text-xs uppercase tracking-wide text-[#6b4f4f]">
