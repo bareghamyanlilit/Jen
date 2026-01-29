@@ -6,13 +6,30 @@ import {
   FaHome,
   FaUtensils,
   FaMapMarkedAlt,
-  FaHeart,
   FaArrowUp,
 } from "react-icons/fa";
-import Calendar from "./calendar";
+import Calendar from "../components/calendar";
+import { motion } from "framer-motion";
+import { MusicPlayer } from "@/components/music";
+
+const anim = {
+  initial: { opacity: 0, y: 10 },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      ease: "easeIn",
+    },
+  },
+  viewport: { once: true },
+};
 
 export default function Home() {
-  const weddingDate:any = new Date("2026-06-16T12:00:00");
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const weddingDate: any = new Date("2026-06-16T12:00:00");
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -23,7 +40,7 @@ export default function Home() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const now:any = new Date();
+      const now: any = new Date();
       const diff = weddingDate - now;
 
       if (diff > 0) {
@@ -71,114 +88,187 @@ export default function Home() {
     },
   ];
   return (
-    <main
-      className="min-h-screen bg-fixed bg-center text-white"
-      style={{
-        backgroundImage:
-          "url('/photo_2026-01-25_19-16-38.jpg')",
-      }}
-    >
-      {/* DARK OVERLAY */}
-      <div className="bg-black/55 min-h-screen relative">
-        {/* HERO */}
-        <section className="relative flex flex-col items-center justify-center text-center min-h-[95vh] px-6">
-          <p className="tracking-[0.35em] absolute top-20 uppercase text-sm mb-5 opacity-80">
-            Հարսանեկան հրավիրատոմս
-          </p>
-
-          <h1 className="text-6xl md:text-7xl font-serif tracking-wider">
-            Ժենյա <br /> <span className="mx-2">&</span> <br /> Վլո
-          </h1>
-
-          <p className="mt-6 text-lg max-w-md opacity-90">
-            Սիրով հրավիրում ենք Ձեզ մասնակցելու մեր կյանքի կարևոր և հիշարժան
-            օրվան
-          </p>
-
-          <div className="mt-6 px-6 py-2 border border-white/70 rounded-full text-sm">
-            15 Օգոստոս, 2026
-          </div>
-
-          {/* COUNTDOWN */}
-          <div className="absolute bottom-10 flex gap-3 md:gap-4">
-            {timeLeft.finished ? (
-              <div className="text-white text-2xl font-semibold px-4 py-2 bg-red-500 rounded-xl shadow">
-                Հարսանիքն արդեն սկսվել է 🎉
-              </div>
-            ) : (
-              <>
-                <TimeBox label="Օր" value={timeLeft.days} />
-                <TimeBox label="Ժամ" value={timeLeft.hours} />
-                <TimeBox label="Րոպե" value={timeLeft.minutes} />
-                <TimeBox label="Վայրկյան" value={timeLeft.seconds} />
-              </>
-            )}
-          </div>
-        </section>
-
-        {/* PROGRAM */}
-        <section className="bg-white text-[#3a2f2f]  px-6 py-12">
-          <h2 className="text-center text-3xl mb-10 font-serif">Օրվա Ծրագիր</h2>
-          {program.map((item, index) => (
-            <Program
-              key={index}
-              icon={item.icon}
-              time={item.time}
-              title={item.title}
-              address={item.address}
-            />
-          ))}
-        </section>
-
-        <Calendar year={2026} month={6} highlightDay={16} />
-
-        {/* FOOTER */}
-        <footer className="py-10 text-center text-sm bg-[#fdf8f5]   text-[#3a2f2f]">
-          <p>Ժենիա 📞 091 00 00 00 | Վլո 📞 093 00 00 00</p>
-          <p className="mt-2 opacity-60">Պատրաստվել է հարսնաքրոջ կողմից</p>
-        </footer>
-
-        {/* SCROLL TO TOP */}
+    <main>
+      <div>
         <button
-          onClick={scrollTop}
-          className="fixed bottom-6 right-6 p-3 rounded-full bg-[#3a2f2f] text-white shadow-lg"
+          onClick={() => setIsPlaying(!isPlaying)}
+          className="fixed z-10 bg-[#3a2f2f] text-[#fdf8f5] right-4 top-4 rounded-full w-10 h-10 flex justify-center items-center"
         >
-          <FaArrowUp />
+          {isPlaying ? "||" : "▶"}
+        </button>
+
+        <MusicPlayer isPlaying={isPlaying} />
+      </div>
+
+      <div
+        className={`bg-fixed bg-no-repeat bg-center fixed z-100 w-full h-full flex flex-col gap-10 justify-center items-center text-white transition ${open ? "hidden -z-10" : ""}`}
+        style={{
+          backgroundImage: "url('/first copy.jpg')",
+        }}
+      >
+        <p>Ժենի և Վլոի հարսանեկան հրավիրատոմս</p>
+        <button
+          onClick={() => {
+            setIsPlaying(!isPlaying);
+            setOpen(!open);
+          }}
+          className="p-2 border rounded-xl"
+        >
+          Բացել
         </button>
       </div>
+
+      <div
+        className="min-h-screen max-w-xl m-auto bg-cover  bg-no-repeat  bg-center   text-[#fdf8f5]  flex flex-col items-center justify-end text-center p-8 "
+        style={{
+          backgroundImage: "url('/first.jpg')",
+        }}
+      >
+        <h1 className="absolute backdrop-blur-xl  p-2 rounded-2xl text-4xl md:text-7xl font-serif! tracking-wider">
+          Ժեն <span className="mx-2">և</span> Վլո
+        </h1>
+      </div>
+
+      <section className=" flex flex-col gap-5 text-center bg-white text-[#3a2f2f]  px-2 py-10">
+        <motion.h2 {...anim} className=" font-bold text-lg">
+          Միջոցառմանը մնաց
+        </motion.h2>
+        <motion.div {...anim} className="">
+          {timeLeft.finished ? (
+            <div className="text-white text-2xl font-semibold px-4 bg-red-500 rounded-xl shadow">
+              Հարսանիքն արդեն սկսվել է 🎉
+            </div>
+          ) : (
+            <div className="flex justify-center text-base ">
+              <TimeBox label="Օր" value={timeLeft.days} /> :
+              <TimeBox label="Ժամ" value={timeLeft.hours} /> :
+              <TimeBox label="Րոպե" value={timeLeft.minutes} /> :
+              <TimeBox label="Վայրկյան" value={timeLeft.seconds} />
+            </div>
+          )}
+        </motion.div>
+
+        <motion.h2 {...anim} className=" font-bold text-lg">
+          Սիրելի՛ ընկերներ և բարեկամներ
+        </motion.h2>
+        <motion.p {...anim} className=" text-base  opacity-90">
+          Սիրով հրավիրում ենք Ձեզ մասնակցելու մեր կյանքի կարևոր և հիշարժան օրվան
+        </motion.p>
+      </section>
+
+      <section
+        className="text-6xl text-[#fdf8f5] min-h-[95vh] bg-center"
+        style={{
+          backgroundImage: "url('/second.jpg')",
+        }}
+      >
+        <div className="min-h-[95vh]  px-4 py-8 backdrop-brightness-50 flex flex-col justify-between text-center ">
+          <motion.div {...anim} className="flex flex-col gap-4">
+            <p className=" ">Save</p>
+            <p className="text-end pr-8">The</p>
+            <p className=" ">Date</p>
+          </motion.div>
+
+          <motion.h2 {...anim} className="text-3xl">
+            16 / 06 / 2026
+          </motion.h2>
+
+          <motion.p {...anim} className=" text-base opacity-90">
+            Գեղեցիկ օր երբ մենք կդառնանք ամուսիններ
+          </motion.p>
+        </div>
+      </section>
+
+      <section className="bg-[#fdf8f5] text-[#3a2f2f]  px-6 py-12">
+        <motion.h2 {...anim} className="text-center text-lg mb-10 font-serif">
+          Ժամանակացույց
+        </motion.h2>
+        {program.map((item, index) => (
+          <Program
+            key={index}
+            icon={item.icon}
+            time={item.time}
+            title={item.title}
+            address={item.address}
+          />
+        ))}
+      </section>
+
+      <section
+        className="min-h-[80vh] bg-fixed bg-center text-white brightness-50 "
+        style={{
+          backgroundImage: "url('/last.jpg')",
+        }}
+      ></section>
+
+      <Calendar year={2026} month={6} highlightDay={16} />
+
+      <section className="text-center bg-white text-[#3a2f2f]  px-2 py-8">
+        <motion.h2 {...anim} className="my-4 font-bold text-base">
+          Խնդրում ենք նախապես տեղեկացնել Ձեր մասնակցության մասին մինչև Մայիսի
+          15-ը
+        </motion.h2>
+
+        <motion.p {...anim} className=" text-base font-bold  opacity-90">
+          Սիրո՛վ սպասում ենք
+        </motion.p>
+      </section>
+
+      <footer className="py-10 text-center text-sm bg-[#b4aba5]   text-[#fdf8f5]">
+        <p>
+          <a href="tel:+37498914109">Ժենյա | 098 91 41 09</a>
+        </p>
+        <p>
+          <a href="tel:+37499611016">Վլո | 099 61 10 16</a>
+        </p>
+        <p className="mt-2 opacity-80">Պատրաստվել է հարսնաքրոջ կողմից</p>
+      </footer>
+
+      <button
+        onClick={scrollTop}
+        className="fixed bottom-6 right-6 p-3 rounded-full bg-[#3a2f2f] text-white shadow-lg"
+      >
+        <FaArrowUp />
+      </button>
     </main>
   );
 }
 
-/* COMPONENTS */
-
 const TimeBox = ({ label, value }) => (
-  <div className="backdrop-blur-md bg-white/80 px-4 py-2  md:px-5 md:py-3 rounded-2xl shadow text-center ">
-    <div className="text-xl md:text-3xl font-semibold text-[#3a2f2f]">
-      {value}
-    </div>
-    <div className="text-xs uppercase tracking-wide text-[#6b4f4f]">
-      {label}
-    </div>
+  <div className="px-2 text-center ">
+    <h2>{value}</h2>
+    <p>{label}</p>
   </div>
 );
 
 const Program = ({ icon, time, title, address }) => (
-  <div className="max-w-xl mx-auto mb-6 bg-[#fdf8f5] rounded-2xl p-5 shadow flex gap-4">
-    <div className="text-xl text-[#8b5d5d] mt-1">{icon}</div>
-    <div>
-      <div className="text-xl opacity-80">{time}</div>
-      <h3 className="font-semibold">{title}</h3>
-      <p className="text-sm mt-1">{address}</p>
+  <div className="my-8 flex items-center text-xl flex-col">
+    <motion.p {...anim} className="text-[#8b5d5d] text-4xl">
+      {icon}
+    </motion.p>
+    <motion.p {...anim} className=" opacity-80">
+      {time}
+    </motion.p>
+    <motion.h3 {...anim} className="">
+      {title}
+    </motion.h3>
+    <motion.p {...anim} className="text-sm  opacity-80">
+      {address}
+    </motion.p>
 
-      <a
-        href={`https://www.google.com/maps/search/${address}`}
-        target="_blank"
-        className="inline-flex items-center gap-2 mt-3 px-4 py-1.5 text-sm border rounded-full hover:bg-[#3a2f2f] hover:text-white transition"
-      >
-        <FaMapMarkedAlt />
-        Ինչպես հասնել
-      </a>
-    </div>
+    <motion.a
+      {...anim}
+      href={`https://www.google.com/maps/search/${address}`}
+      target="_blank"
+      className="inline-flex items-center gap-2 mt-3 px-4 py-1.5 text-sm "
+    >
+      <FaMapMarkedAlt />
+      Ինչպես հասնել
+    </motion.a>
+    <img
+      src="https://static.thenounproject.com/png/arrow-icon-5953741-512.png"
+      className="rotate-215 w-20 h-20 object-cover opacity-60 my-8"
+      alt=""
+    />
   </div>
 );
