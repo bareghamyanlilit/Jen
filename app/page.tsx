@@ -12,7 +12,7 @@ import Calendar from "../components/calendar";
 import { motion } from "framer-motion";
 import { MusicPlayer } from "@/components/music";
 
-const anim = {
+const anim:any = {
   initial: { opacity: 0, y: 10 },
   whileInView: {
     opacity: 1,
