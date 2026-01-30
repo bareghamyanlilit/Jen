@@ -11,8 +11,9 @@ import {
 import Calendar from "../components/calendar";
 import { motion } from "framer-motion";
 import { MusicPlayer } from "@/components/music";
+import Image from "next/image";
 
-const anim:any = {
+const anim: any = {
   initial: { opacity: 0, y: 10 },
   whileInView: {
     opacity: 1,
@@ -74,12 +75,12 @@ export default function Home() {
       title: "Պսակադրություն",
       address: "Սուրբ Հռիփսիմե եկեղեցի",
     },
-    {
-      icon: <FaHome />,
-      time: "16:00",
-      title: "Փեսայի տուն",
-      address: "Մովսես Խորենացի փողոց, 7 տուն",
-    },
+    // {
+    //   icon: <FaHome />,
+    //   time: "16:00",
+    //   title: "Փեսայի տուն",
+    //   address: "Մովսես Խորենացի փողոց, 7 տուն",
+    // },
     {
       icon: <FaUtensils />,
       time: "17:30",
@@ -101,7 +102,7 @@ export default function Home() {
       </div>
 
       <div
-        className={`bg-fixed bg-no-repeat bg-center fixed z-100 w-full h-full flex flex-col gap-10 justify-center items-center text-white transition ${open ? "hidden -z-10" : ""}`}
+        className={`bg-no-repeat bg-center fixed z-100 w-full h-full flex flex-col gap-10 justify-center items-center text-white transition ${open ? "hidden -z-10" : ""}`}
         style={{
           backgroundImage: "url('/first copy.jpg')",
         }}
@@ -256,6 +257,12 @@ const Program = ({ icon, time, title, address }) => (
       {address}
     </motion.p>
 
+    {title === "Պսակադրություն" && (
+      <img src="/ekexeci.jpg" className="w-[90vw]" />
+    )}
+    {title === "Հարսանյաց հանդիսություն" && (
+      <img src="/restoran.jpg" className="w-[90vw]" />
+    )}
     <motion.a
       {...anim}
       href={`https://www.google.com/maps/search/${address}`}
@@ -265,10 +272,12 @@ const Program = ({ icon, time, title, address }) => (
       <FaMapMarkedAlt />
       Ինչպես հասնել
     </motion.a>
-    <img
-      src="https://static.thenounproject.com/png/arrow-icon-5953741-512.png"
-      className="rotate-215 w-20 h-20 object-cover opacity-60 my-8"
-      alt=""
-    />
+    {title !== "Հարսանյաց հանդիսություն" && (
+      <img
+        src="https://static.thenounproject.com/png/arrow-icon-5953741-512.png"
+        className="rotate-215 w-20 h-20 object-cover opacity-60 my-8"
+        alt=""
+      />
+    )}
   </div>
 );
