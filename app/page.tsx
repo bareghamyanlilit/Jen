@@ -256,15 +256,27 @@ const Program = ({ icon, time, title, address }) => (
     {title === "Հարսանյաց հանդիսություն" && (
       <img src="/restoran.jpg" className="my-2 max-w-full" />
     )}
-    <motion.a
-      {...anim}
-      href={`https://www.google.com/maps/search/${address == "Գեղակերտ" ? "Գեղակերտ Ցոլակ Գևորգյան 18" : address}`}
-      target="_blank"
-      className="inline-flex items-center gap-2 mt-3 px-4 py-1.5 text-sm "
-    >
-      <FaMapMarkedAlt />
-      Ինչպես հասնել
-    </motion.a>
+    {address == "Գեղակերտ" ? (
+      <motion.a
+        {...anim}
+        href="https://maps.app.goo.gl/BDyxceF5CcrehGZR6?g_st=com.google.maps.preview.copy"
+        target="_blank"
+        className="inline-flex items-center gap-2 mt-3 px-4 py-1.5 text-sm "
+      >
+        <FaMapMarkedAlt />
+        Ինչպես հասնել
+      </motion.a>
+    ) : (
+      <motion.a
+        {...anim}
+        href={`https://www.google.com/maps/search/${address}`}
+        target="_blank"
+        className="inline-flex items-center gap-2 mt-3 px-4 py-1.5 text-sm "
+      >
+        <FaMapMarkedAlt />
+        Ինչպես հասնել
+      </motion.a>
+    )}
     {title !== "Հարսանյաց հանդիսություն" && (
       <img
         src="https://static.thenounproject.com/png/arrow-icon-5953741-512.png"
