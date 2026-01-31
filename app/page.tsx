@@ -11,7 +11,6 @@ import {
 import Calendar from "../components/calendar";
 import { motion } from "framer-motion";
 import { MusicPlayer } from "@/components/music";
-import Image from "next/image";
 
 const anim: any = {
   initial: { opacity: 0, y: 10 },
@@ -30,7 +29,7 @@ export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const weddingDate: any = new Date("2026-06-16T12:00:00");
+  const weddingDate: any = new Date("2026-06-17T12:00:00");
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -67,7 +66,7 @@ export default function Home() {
       icon: <FaHome />,
       time: "12:00",
       title: "Հարսի տուն",
-      address: "Հ․ Թումանյան փողոց, 42 տուն",
+      address: "Գեղակերտ",
     },
     {
       icon: <FaChurch />,
@@ -75,12 +74,6 @@ export default function Home() {
       title: "Պսակադրություն",
       address: "Սուրբ Հռիփսիմե եկեղեցի",
     },
-    // {
-    //   icon: <FaHome />,
-    //   time: "16:00",
-    //   title: "Փեսայի տուն",
-    //   address: "Մովսես Խորենացի փողոց, 7 տուն",
-    // },
     {
       icon: <FaUtensils />,
       time: "17:30",
@@ -89,7 +82,7 @@ export default function Home() {
     },
   ];
   return (
-    <main>
+    <main className="max-w-xl m-auto">
       <div>
         <button
           onClick={() => setIsPlaying(!isPlaying)}
@@ -107,7 +100,7 @@ export default function Home() {
           backgroundImage: "url('/first copy.jpg')",
         }}
       >
-        <p>Ժենի և Վլոի հարսանեկան հրավիրատոմս</p>
+        <p>Ժենիի և Վլոի հարսանեկան հրավիրատոմս</p>
         <button
           onClick={() => {
             setIsPlaying(!isPlaying);
@@ -126,11 +119,11 @@ export default function Home() {
         }}
       >
         <h1 className="absolute backdrop-blur-xl  p-2 rounded-2xl text-4xl md:text-7xl font-serif! tracking-wider">
-          Ժեն <span className="mx-2">և</span> Վլո
+          Ժենի <span className="mx-2">և</span> Վլո
         </h1>
       </div>
 
-      <section className=" flex flex-col gap-5 text-center bg-white text-[#3a2f2f]  px-2 py-10">
+      <section className=" flex flex-col gap-5 text-center bg-white text-[#3a2f2f]  px-6 py-10">
         <motion.h2 {...anim} className=" font-bold text-lg">
           Միջոցառմանը մնաց
         </motion.h2>
@@ -171,7 +164,7 @@ export default function Home() {
           </motion.div>
 
           <motion.h2 {...anim} className="text-3xl">
-            16 / 06 / 2026
+            17 / 06 / 2026
           </motion.h2>
 
           <motion.p {...anim} className=" text-base opacity-90">
@@ -202,7 +195,7 @@ export default function Home() {
         }}
       ></section>
 
-      <Calendar year={2026} month={6} highlightDay={16} />
+      <Calendar year={2026} month={6} highlightDay={17} />
 
       <section className="text-center bg-white text-[#3a2f2f]  px-2 py-8">
         <motion.h2 {...anim} className="my-4 font-bold text-base">
@@ -258,14 +251,14 @@ const Program = ({ icon, time, title, address }) => (
     </motion.p>
 
     {title === "Պսակադրություն" && (
-      <img src="/ekexeci.jpg" className="w-[90vw]" />
+      <img src="/ekexeci.jpg" className="my-2 max-w-full" />
     )}
     {title === "Հարսանյաց հանդիսություն" && (
-      <img src="/restoran.jpg" className="w-[90vw]" />
+      <img src="/restoran.jpg" className="my-2 max-w-full" />
     )}
     <motion.a
       {...anim}
-      href={`https://www.google.com/maps/search/${address}`}
+      href={`https://www.google.com/maps/search/${address == "Գեղակերտ" ? "Գեղակերտ Ցոլակ Գևորգյան 18" : address}`}
       target="_blank"
       className="inline-flex items-center gap-2 mt-3 px-4 py-1.5 text-sm "
     >
