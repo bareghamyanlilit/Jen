@@ -210,7 +210,7 @@ export default function Home() {
 
       <footer className="py-10 text-center text-sm bg-[#b4aba5]   text-[#fdf8f5]">
         <p>
-          <a href="tel:+37498914109">Ժենյա | 098 91 41 09</a>
+          <a href="tel:+37498914109">Ժենի | 098 91 41 09</a>
         </p>
         <p>
           <a href="tel:+37499611016">Վլո | 099 61 10 16</a>
