@@ -11,6 +11,7 @@ import {
 import Calendar from "../components/calendar";
 import { motion } from "framer-motion";
 import { MusicPlayer } from "@/components/music";
+import Link from "next/link";
 
 const anim: any = {
   initial: { opacity: 0, y: 10 },
@@ -95,7 +96,7 @@ export default function Home() {
       </div>
 
       <div
-        className={`bg-no-repeat bg-center fixed z-100 w-full h-full flex flex-col gap-10 justify-center items-center text-white transition ${open ? "hidden -z-10" : ""}`}
+        className={`bg-no-repeat justify-self-center bg-center fixed z-100 w-full h-full flex flex-col gap-10 justify-center items-center text-white transition ${open ? "hidden -z-10" : ""}`}
         style={{
           backgroundImage: "url('/first copy.jpg')",
         }}
@@ -208,14 +209,17 @@ export default function Home() {
         </motion.p>
       </section>
 
-      <footer className="py-10 text-center text-sm bg-[#b4aba5]   text-[#fdf8f5]">
+      <footer className="py-10 text-center text-sm bg-[#b4aba5]   text-[#fcfbfb]">
         <p>
           <a href="tel:+37498914109">Ժենի | 098 91 41 09</a>
         </p>
         <p>
           <a href="tel:+37499611016">Վլո | 099 61 10 16</a>
         </p>
-        <p className="mt-2 opacity-80">Պատրաստվել է հարսնաքրոջ կողմից</p>
+        <hr className="my-5" />
+        <Link href="https://lilitbareghamyan.vercel.app/">
+          <p className="mt-2">Պատրաստվել է <span className=" border-b">Հարսնաքրոջ</span> կողմից</p>
+        </Link>
       </footer>
 
       <button
