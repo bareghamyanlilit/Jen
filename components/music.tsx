@@ -10,7 +10,7 @@ export function MusicPlayer({ isPlaying }) {
     if (!audio) return;
 
     if (isPlaying) {
-      audio.play().catch(() => {}); // autoplay restriction-ը catch անում ենք
+      audio.play().catch(() => {});
     } else {
       audio.pause();
     }
