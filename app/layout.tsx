@@ -2,8 +2,23 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Jen & Vlo",
-  description: "Jen & Vlo",
+  title: "Ժենիի և Վլո",
+  description: "Ժենիի և Վլո",
+  openGraph: {
+    title: "Ժենիի և Վլոի",
+    description: "Best invitation website",
+    url: "https://jeni-vlo.vercel.app/",
+    siteName: "Ժենիի և Վլո",
+    images: [
+      {
+        url: "/first.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -13,9 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body >
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

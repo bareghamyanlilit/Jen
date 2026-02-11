@@ -26,11 +26,33 @@ const anim: any = {
   viewport: { once: true },
 };
 
+const program = [
+  {
+    icon: <FaHome />,
+    time: "12:00",
+    title: "Հարսի տուն",
+    address: "Գեղակերտ",
+  },
+  {
+    icon: <FaChurch />,
+    time: "14:30",
+    title: "Պսակադրություն",
+    address: "Սուրբ Հռիփսիմե եկեղեցի",
+  },
+  {
+    icon: <FaUtensils />,
+    time: "17:30",
+    title: "Հարսանյաց հանդիսություն",
+    address: "Արև Ռեստորանային Համալիր",
+  },
+];
+
+const weddingDate: any = new Date("2026-06-17T12:00:00");
+
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const weddingDate: any = new Date("2026-06-17T12:00:00");
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -62,26 +84,6 @@ export default function Home() {
 
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  const program = [
-    {
-      icon: <FaHome />,
-      time: "12:00",
-      title: "Հարսի տուն",
-      address: "Գեղակերտ",
-    },
-    {
-      icon: <FaChurch />,
-      time: "14:30",
-      title: "Պսակադրություն",
-      address: "Սուրբ Հռիփսիմե եկեղեցի",
-    },
-    {
-      icon: <FaUtensils />,
-      time: "17:30",
-      title: "Հարսանյաց հանդիսություն",
-      address: "Արև Ռեստորանային Համալիր",
-    },
-  ];
   return (
     <div className="max-w-xl m-auto h-screen">
       <div
@@ -101,7 +103,7 @@ export default function Home() {
           Բացել
         </button>
       </div>
-      
+
       <div className={`max-w-xl m-auto ${open ? "" : "hidden"}`}>
         <div>
           <button
