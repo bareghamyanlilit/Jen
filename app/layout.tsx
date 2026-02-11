@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Ժենիի և Վլո",
   description: "Ժենիի և Վլո",
   openGraph: {
-    title: "Ժենիի և Վլոի",
+    title: "Ժենիի և Վլոի հարսանեկան հրավիրատոմս",
     description: "Best invitation website",
     url: "https://jeni-vlo.vercel.app/",
     siteName: "Ժենիի և Վլո",
