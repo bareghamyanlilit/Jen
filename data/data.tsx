@@ -16,15 +16,15 @@ export const anim: any = {
 export const program = [
   {
     icon: <FaHome />,
-    time: "12:00",
+    time: "13:00",
     title: "Հարսի տուն",
     address: "Գեղակերտ",
   },
   {
     icon: <FaChurch />,
-    time: "14:30",
+    time: "15:00",
     title: "Պսակադրություն",
-    address: "Սուրբ Հռիփսիմե եկեղեցի",
+    address: "Սուրբ Գայանե եկեղեցի",
   },
   {
     icon: <FaUtensils />,
