@@ -17,7 +17,7 @@ export const program = [
   {
     icon: <FaHome />,
     time: "12:00",
-    title: "Փեսու տուն",
+    title: "Փեսայի տուն",
     address: "Բանգլադեշ",
   },
   {
