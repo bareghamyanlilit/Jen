@@ -41,10 +41,21 @@ const ProgramItem = ({ icon, time, title, address }) => (
     {title === "Հարսանյաց հանդիսություն" && (
       <img src="/restoran.jpg" className="my-2 max-w-full" />
     )}
+
     {address == "Գեղակերտ" ? (
       <motion.a
         {...anim}
         href="https://maps.app.goo.gl/BDyxceF5CcrehGZR6?g_st=com.google.maps.preview.copy"
+        target="_blank"
+        className="inline-flex items-center gap-2 mt-3 px-4 py-1.5 text-sm "
+      >
+        <FaMapMarkedAlt />
+        Ինչպես հասնել
+      </motion.a>
+    ) : address == "Բանգլադեշ" ? (
+      <motion.a
+        {...anim}
+        href="https://www.google.com/maps/place/40%C2%B010'24.4%22N+44%C2%B027'06.3%22E/@40.1729284,44.4518814,17z/data=!4m4!3m3!8m2!3d40.173432!4d44.451757?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D"
         target="_blank"
         className="inline-flex items-center gap-2 mt-3 px-4 py-1.5 text-sm "
       >

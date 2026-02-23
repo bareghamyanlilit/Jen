@@ -16,6 +16,12 @@ export const anim: any = {
 export const program = [
   {
     icon: <FaHome />,
+    time: "12:00",
+    title: "Փեսու տուն",
+    address: "Բանգլադեշ",
+  },
+  {
+    icon: <FaHome />,
     time: "13:00",
     title: "Հարսի տուն",
     address: "Գեղակերտ",
